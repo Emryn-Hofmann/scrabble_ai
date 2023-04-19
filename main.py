@@ -2,11 +2,16 @@ from UI import scrabble_renderer
 from Game import scrabble_game, scrabble_objects
 import pygame as p
 
+mode = 'en'
 
-# gamestate = scrabble_game.GameState('Data/multipliers.txt', 'Data/lang/tr/tiles.txt')
-# gameengine = scrabble_game.GameEngine(gamestate, 'Data/lang/tr/1000_turkishtextbook_words.txt')
-gamestate = scrabble_game.GameState('Data/multipliers.txt', 'Data/lang/en/tiles.txt')
-gameengine = scrabble_game.GameEngine(gamestate, 'Data/lang/en/850_ogdens_words.txt')
+
+if mode == 'en':
+    gamestate = scrabble_game.GameState('Data/multipliers.txt', 'Data/lang/en/tiles.txt')
+    gameengine = scrabble_game.GameEngine(gamestate, 'Data/lang/en/850_ogdens_words.txt')
+elif mode == 'tr':
+    gamestate = scrabble_game.GameState('Data/multipliers.txt', 'Data/lang/tr/tiles.txt')
+    gameengine = scrabble_game.GameEngine(gamestate, 'Data/lang/tr/1000_turkishtextbook_words.txt')
+
 renderer = scrabble_renderer.Renderer(gamestate, gameengine)
 
 p.init()
@@ -18,8 +23,6 @@ renderer.init_pymenus()
 renderer.init_location_rects()
 
 clock = p.time.Clock()
-
-# renderer.ai_possible_moves_sec.get_widget('poss_moves').update_items(["a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b", "a", "b"])
 
 dragging = False
 drag_mode_board = False
