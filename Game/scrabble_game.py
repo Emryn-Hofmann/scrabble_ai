@@ -1,5 +1,10 @@
-from Game.scrabble_objects import *
-from AI.scrabble_wordfinder import *
+from Game.scrabble_objects import (
+    Board,
+    Pouch,
+    Player,
+    Tile
+)
+from AI.scrabble_wordfinder import WordFinder
 import pygame as p
 
 # TODO Improve by adding sim ?

@@ -1,4 +1,4 @@
-from AI.trie import *
+from AI.trie import Trie
 from Game.scrabble_objects import alphabet
 
 class WordFinder:

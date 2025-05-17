@@ -24,7 +24,7 @@ class Trie:
     
     def is_word(self, word):
         final_node = self.lookup_string(word)
-        if final_node != None and final_node.is_word:
+        if final_node is not None and final_node.is_word:
             return True
         return False
 

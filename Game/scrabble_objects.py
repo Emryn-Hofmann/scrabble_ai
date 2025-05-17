@@ -93,7 +93,7 @@ class Cell:
         self.tile = None
     
     def is_empty(self):
-        return self.tile == None
+        return self.tile is None
     
 class Tile:
     def __init__(self, letter, point) -> None:
@@ -112,7 +112,7 @@ class Pouch:
             for line in f:
                 line_info = line.split(',')
                 alphabet.append(line_info[0])
-                for i in range(int(line_info[2])):
+                for _ in range(int(line_info[2])):
                     self.add_tile(Tile(line_info[0], int(line_info[1])))
 
     def add_tile(self, tile):
@@ -142,14 +142,14 @@ class Rack:
 
     def remove_played_tiles(self):
         for i, tile in enumerate(self.tiles):
-            if tile != None and tile.draft:
+            if tile is not None and tile.draft:
                 self.tiles[i] = None
 
     def fill_empty_tiles(self, pouch):
         for i, tile in enumerate(self.tiles):
-            if tile == None:
+            if tile is None:
                 drawed_tile = pouch.draw_tile()
-                if drawed_tile != None:
+                if drawed_tile is not None:
                     self.tiles[i] = drawed_tile
                 else:
                     return False
@@ -158,7 +158,7 @@ class Rack:
     def add_tile(self, tile, pos = -1):
         if pos == -1:
             for i in range(7):
-                if self.tiles[i] == None:
+                if self.tiles[i] is None:
                     pos = i
                     break
         self.tiles[pos] = tile

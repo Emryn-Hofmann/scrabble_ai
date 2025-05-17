@@ -224,7 +224,7 @@ class Renderer():
         cell_surf_rect = surf.get_rect()
         size = cell_surf_rect.size
 
-        if cell.tile != None:
+        if cell.tile is not None:
             self.render_tile(cell.tile, surf)
         elif cell.position == (7, 7):
             cell_surf.fill((245, 172, 179))
@@ -289,7 +289,7 @@ class Renderer():
     
         for i in range(7):
             start_pos_x = SQ_SIZE * i
-            if rack.tiles[i] != None:
+            if rack.tiles[i] is not None:
                 rect_surf = p.Surface((SQ_SIZE, SQ_SIZE))
                 self.render_tile(rack.tiles[i], rect_surf)
                 if rack.tiles[i].draft:
